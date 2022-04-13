@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { db } from "../firebase";
+import firestore from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 
 import NewMeetupForm from "../components/meetups/NewMeetupForm";
@@ -9,7 +9,7 @@ function NewMeetupsPage() {
 
   const addMeetupHandler = async (meetupData) => {
     try {
-      await addDoc(collection(db, "meetups"), {
+      await addDoc(collection(firestore, "meetups"), {
         title: meetupData.title,
         image: meetupData.image,
         address: meetupData.address,

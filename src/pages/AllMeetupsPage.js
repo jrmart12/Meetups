@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { db } from "../firebase";
+import firestore from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 
 import MeetupList from "../components/meetups/MeetupList";
@@ -31,7 +31,7 @@ function AllMeetupsPage() {
   useEffect(() => {
     setIsLoading(true);
 
-    getDocs(collection(db, "meetups"))
+    getDocs(collection(firestore, "meetups"))
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           let item = { id: doc.id, data: doc.data() };

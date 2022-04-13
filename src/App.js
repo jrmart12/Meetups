@@ -6,15 +6,12 @@ import FavoritesPage from "./pages/Favorites";
 import Signup from "./pages/Signup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
-import { AuthProvider } from "./context/AuthContext";
 // import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import ForgotPassword from "../src/components/ForgotPassword";
 import { useEffect } from "react";
 import PrivateWrapper from "./components/PrivateRoute";
 import UpdateProfile from "../src/components/UpdateProfile";
-
-
 
 function App() {
   // localhost : 3000/favorites
@@ -24,63 +21,59 @@ function App() {
     }
   }, []);
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Container
-          className="d-flex align-items-center justify-content-center"
-          style={{ minHeight: "100hv" }}
-        >
-          <div className="w-100" style={{ maxWidth: "400px" }}>
-            <Routes>
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/forgot-password" element={<ForgotPassword />} />
-            </Routes>
-          </div>
-        </Container>
+    <BrowserRouter>
+      <Container
+        className="d-flex align-items-center justify-content-center"
+        style={{ minHeight: "100hv" }}
+      >
+        <div className="w-100" style={{ maxWidth: "400px" }}>
+          <Routes>
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+          </Routes>
+        </div>
+      </Container>
 
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <PrivateWrapper>
-                <AllMeetupsPage />
-              </PrivateWrapper>
-            }
-          />
-          <Route
-            path="/new-meetups"
-            element={
-              <PrivateWrapper>
-                <NewMeetupsPage />
-              </PrivateWrapper>
-            }
-          />
-          <Route
-            path="/favorites"
-            element={
-              <PrivateWrapper>
-                <FavoritesPage />
-              </PrivateWrapper>
-            }
-          />
-          <Route
-            path="/update-profile"
-            element={
-              <PrivateWrapper>
-                <UpdateProfile />
-              </PrivateWrapper>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <PrivateWrapper>
+              <AllMeetupsPage />
+            </PrivateWrapper>
+          }
+        />
+        <Route
+          path="/new-meetups"
+          element={
+            <PrivateWrapper>
+              <NewMeetupsPage />
+            </PrivateWrapper>
+          }
+        />
+        <Route
+          path="/favorites"
+          element={
+            <PrivateWrapper>
+              <FavoritesPage />
+            </PrivateWrapper>
+          }
+        />
+        <Route
+          path="/update-profile"
+          element={
+            <PrivateWrapper>
+              <UpdateProfile />
+            </PrivateWrapper>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
-
-
 
 // function App() {
 //   return (
